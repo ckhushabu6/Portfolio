@@ -1,160 +1,182 @@
-import contact from '../assets/contact.png'
-import React, { useRef, useState } from 'react'
+import contact from "../assets/contact.png";
+import React, { useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import emailjs from "@emailjs/browser";
 
-
-
-function Contect({darkMode}) {
+function Contect({ darkMode }) {
   const form = useRef();
-  const [isSent , setIsSent] =  useState(false)
+  const [isSent, setIsSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const sendMessage = (e)=>{
-    e.prevant()
-  }
+  const sendMessage = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_p6syavg",
+        "template_8s94ice",
+        form.current,
+        "yltcJpt_azRZgQBXE"
+      )
+      .then(
+        () => {
+          setIsSent(true);
+          setLoading(false);
+          form.current.reset();
+          toast.success("Message sent successfully! ✅", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+        },
+        () => {
+          setLoading(false);
+          toast.error("Fail to send message, Please try again", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+        }
+      );
+  };
+
   return (
-   <section 
-   id='contact'
-   style={{
-    backgroundColor : darkMode ? '#111827' : '#f9fafb'
-   }}
-   className='py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden'>
-    <div className='text-center mb-8 sm:mb-10 md: mb:12'
-    data-aos='fade-up'>
-      <h2  
-      className='text-2xl sm:text-3xl md: text-4xl font-bold mb-2 sm:mb-3'
-      style={{
-        color: darkMode ? 'white' : '#1f2937'
-      }}>
-        Get In<span 
-        style={{
-          background : 'linear-gradient(to right, #f97326, #f59e0b)',
-          WebkitBackgroundClip:'text',
-          backgroundClip: 'text',
-          color:'transparent'
+    <section
+      id="contact"
+      style={{ backgroundColor: darkMode ? "#111827" : "#f9fafb" }}
+      className="py-16 lg:py-24"
+    >
+      <ToastContainer />
 
-        }}
-        >
-          Touch
-        </span>
+      <div className="container mx-auto px-4">
+        {/* Title */}
+        <div className="text-center mb-12">
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ color: darkMode ? "white" : "#1f2937" }}
+          >
+            Get In{" "}
+            <span
+              style={{
+                background: "linear-gradient(to right, #f97326, #f59e0b)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              Touch
+            </span>
+          </h2>
+          <p
+            className="mt-3 text-base md:text-lg"
+            style={{ color: darkMode ? "#cbd5e1" : "#6b7280" }}
+          >
+            Send me a message and I will reply you soon.
+          </p>
+        </div>
 
-      </h2>
-
-        <p
-        style={{
-          color:darkMode ? '#d1d5db' : '#6b2280'
-        }}
-        >
-          Let's discuss your project
-        </p>
-
-
-
-    </div>
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-center'>
-      <div
-      className='flex justify-center order-2 lg:order-1 '
-      data-aos='fade-right'
-      >
-        <img src={contact} alt="contact"
-        className='w-full max-w-xs sm:max-w-sm lg:max-w-md h-auto object-contain'
-        />
-
-      </div>
-        <form ref={form} onSubmit={sendMessage}
-        style={{background : darkMode
-          ? 'linear-gradient(to right, #1f2937, #111827)'
-          : 'linear-gradient(to right, #ffffff, #f9fafb)',
-          borderColor: darkMode ? '#374151' : '#e5e7eb'
-        }}
-        className='rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border shadow-lg 
-        sm:gap-4 mb-3 sm:mb-4'>
-          <div className='grid grid-cols-1 sm:grid-cols-2  gap-3  sm:gap-4  mb-3  sm:mb-4'>
-          <input 
-          type='text'
-          placeholder='First Name'
-          style={{
-            backgroundColor: darkMode ? '#374151' : '#faede3',
-            borderColor : darkMode ? '#4b5563' : '#d1d5db',
-            color : darkMode ? 'white' : '#1f2937' 
-          }}
-          className='w-full px-3 sm:px-4 sm:py-3 
-          rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 ``
-          focus:ring-orange-500/20  transition-all   mb-3  sm-mb-4'
-          required
-         />
-
-          <input 
-          type='text'
-          placeholder='Last Name'
-          style={{
-            backgroundColor: darkMode ? '#374151' : '#faede3',
-            borderColor : darkMode ? '#4b5563' : '#d1d5db',
-            color : darkMode ? 'white' : '#1f2937' 
-          }}
-          className='w-full px-3 sm:px-4 sm:py-3 
-          rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 ``
-          focus:ring-orange-500/20  transition-all  mb-3  sm-mb-4'
-          required
-         />
-
+        {/* Layout (Side by Side) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          
+          {/* SIMPLE IMAGE */}
+          <div className="flex justify-center" data-aos="fade-right">
+            <img
+              src={contact}
+              alt="contact"
+              className="w-[220px] sm:w-[260px] lg:w-[300px] object-contain"
+            />
           </div>
-           <input 
-          type='email'
-          placeholder='Email  Address'
-          style={{
-            backgroundColor: darkMode ? '#374151' : '#faede3',
-            borderColor : darkMode ? '#4b5563' : '#d1d5db',
-            color : darkMode ? 'white' : '#1f2937' 
-          }}
-          className='w-full px-3 sm:px-4 sm:py-3 
-          rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 ``
-          focus:ring-orange-500/20  transition-all   mb-3  sm-mb-4'
-          required
-         />
-          <input 
-          type='number'
-          placeholder='Phone Number'
-          style={{
-            backgroundColor: darkMode ? '#374151' : '#faede3',
-            borderColor : darkMode ? '#4b5563' : '#d1d5db',
-            color : darkMode ? 'white' : '#1f2937' 
-          }}
-          className='w-full px-3 sm:px-4 sm:py-3 
-          rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 ``
-          focus:ring-orange-500/20  transition-all  mb-3  sm-mb-4'
-          required
-         />
 
-         <textarea
-          rows='4'
-          placeholder='Your Message'
-          style={{
-            backgroundColor: darkMode ? '#374151' : '#faede3',
-            borderColor : darkMode ? '#4b5563' : '#d1d5db',
-            color : darkMode ? 'white' : '#1f2937' 
-          }}
-          className='w-full px-3 sm:px-4 sm:py-3 
-          rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 ``
-          focus:ring-orange-500/20  transition-all  
-          mb-4 sm-mb-6  resize-none'
-          required
-         />
-         <button  
-         
-         type='submit'
-         style={{background : 'linear-gradient(to right, #f97316, #f59e0b'}}
-         className='w-full py-2  sm:py-3 text`-white font-semibold  rounded-lg text-sm sm:text-base
-         hover:shadow-lg hover:shadow-orange-500/25 hover:scale-[1.02] transition-all'
-         >
-          Send Message
-         </button>
-        </form>
-    </div>
+          {/* FORM */}
+          <form
+            ref={form}
+            onSubmit={sendMessage}
+            data-aos="fade-left"
+            data-aos-delay="200"
+            className="p-6 rounded-2xl shadow-xl border"
+            style={{
+              background: darkMode
+                ? "linear-gradient(to right, #1f2937, #111827)"
+                : "linear-gradient(to right, #ffffff, #f3f4f6)",
+              borderColor: darkMode ? "#374151" : "#e5e7eb",
+            }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-transparent mb-6 border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                style={{
+                  borderColor: darkMode ? "#4b5563" : "#d1d5db",
+                  color: darkMode ? "white" : "#1f2937",
+                }}
+              />
 
-  
-   </section>
-  )
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                style={{
+                  borderColor: darkMode ? "#4b5563" : "#d1d5db",
+                  color: darkMode ? "white" : "#1f2937",
+                }}
+              />
+            </div>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+              className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4"
+              style={{
+                borderColor: darkMode ? "#4b5563" : "#d1d5db",
+                color: darkMode ? "white" : "#1f2937",
+              }}
+            />
+
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone Number"
+              required
+              className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4"
+              style={{
+                borderColor: darkMode ? "#4b5563" : "#d1d5db",
+                color: darkMode ? "white" : "#1f2937",
+              }}
+            />
+
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Your Message"
+              required
+              className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4 resize-none"
+              style={{
+                borderColor: darkMode ? "#4b5563" : "#d1d5db",
+                color: darkMode ? "white" : "#1f2937",
+              }}
+            />
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl font-semibold text-white hover:shadow-xl transition transform hover:-translate-y-1"
+              style={{
+                background: "linear-gradient(to right, #f97316, #f59e0b)",
+              }}
+            >
+              {loading ? "Sending..." : isSent ? "Sent ✓" : "Send Message"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Contect
+export default Contect;
