@@ -104,7 +104,7 @@ function Contect({ darkMode }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <input
                 type="text"
-                name="firstName"
+                name="from_name"
                 placeholder="First Name"
                 required
                 className="w-full px-4 py-3 rounded-xl bg-transparent mb-6 border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
@@ -129,7 +129,7 @@ function Contect({ darkMode }) {
 
             <input
               type="email"
-              name="email"
+              name="from_email"
               placeholder="Email Address"
               required
               className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4"
