@@ -4,12 +4,11 @@ import aboutImg from "../assets/home.png";
 function About({ darkMode }) {
   return (
     <section
-       id="about"
+      id="about"
       className={`min-h-screen flex items-center px-4 sm:px-6 py-20
       ${darkMode ? "bg-gray-900" : "bg-gray-50"}`}
     >
       <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
         {/* IMAGE */}
         <div
           data-aos="fade-up"
@@ -19,13 +18,13 @@ function About({ darkMode }) {
           <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
             <div
               className="absolute -inset-10 lg:-inset-20 
-              bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 
+              
               rounded-3xl blur-2xl opacity-30"
             />
             <img
               src={aboutImg}
               alt="About"
-              className="relative z-10 w-full h-full object-cover rounded-2xl shadow-xl"
+              className="relative z-10 w-full h-full object-cover rounded-2xl "
             />
           </div>
         </div>
@@ -51,8 +50,8 @@ function About({ darkMode }) {
             responsive, and scalable web applications using{" "}
             <span className="text-orange-500 font-semibold">
               React and Tailwind CSS
-            </span>.
-            I focus on writing clean, maintainable code and delivering
+            </span>
+            . I focus on writing clean, maintainable code and delivering
             user-friendly interfaces.
           </p>
 

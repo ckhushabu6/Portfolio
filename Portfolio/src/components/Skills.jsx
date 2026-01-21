@@ -8,10 +8,10 @@ import framer_motion from '../assets/framer_motion.png'
 
 function Skills({darkMode}) {
     const skills = [
-        {name : 'html', icon:html , level:90 ,
+        {name : 'html', icon:html , level:80 ,
              color: 'from-orange-500 to-amber-500'},
 
-        {name : 'css', icon:css , level:80 ,
+        {name : 'css', icon:css , level:70 ,
              color: 'from-orange-500 to-amber-500'},
 
         {name : 'js', icon:js , level:70 ,
@@ -55,9 +55,8 @@ function Skills({darkMode}) {
                     style={{
                         color: darkMode ? '#d1d5db' : '#4b5563'
                     }}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil,
-                        consequatur voluptates
-                         qui sit aliquid fugit quam ipsa vero tempore? 
+                   A mix of frontend technologies I use to build modern and responsive
+            web applications.
                         
                      </p> 
                 </div> 

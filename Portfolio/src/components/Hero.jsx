@@ -9,8 +9,8 @@ import { DownloadIcon, Mail } from "lucide-react";
 
 function Hero({ darkMode }) {
   const socialIcons = [
-    { icon: linkedin, alt: "LinkedIn", link: "https://linkedin.com" },
-    { icon: github, alt: "GitHub", link: "https://github.com" },
+    { icon: linkedin, alt: "LinkedIn", link: "https://www.linkedin.com/in/khushabu-chauhan-58672b281/" },
+    { icon: github, alt: "GitHub", link: "https://github.com/ckhushabu6" },
     { icon: insta, alt: "Instagram", link: "https://instagram.com" },
     
   ];

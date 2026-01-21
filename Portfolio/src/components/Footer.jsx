@@ -33,7 +33,7 @@ function Footer({ darkMode }) {
           {/* Social Icons */}
           <div className="flex gap-4 justify-center">
             <a
-              href="#"
+              href="https://github.com/ckhushabu6"
               className="w-10 h-10 rounded-full flex items-center justify-center
               bg-gray-700 text-white hover:scale-110 transition-all
               hover:bg-gradient-to-r hover:from-orange-500 hover:to-amber-500"
@@ -42,7 +42,7 @@ function Footer({ darkMode }) {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/in/khushabu-chauhan-58672b281/"
               className="w-10 h-10 rounded-full flex items-center justify-center
               bg-gray-700 text-white hover:scale-110 transition-all
               hover:bg-gradient-to-r hover:from-orange-500 hover:to-amber-500"
