@@ -1,134 +1,150 @@
-import insta from "../assets/insta.png";
-import youtube from "../assets/youtube.png";
-import tiktok from "../assets/tiktok.png";
-import github from "../assets/github.png";
-import linkedin from "../assets/linkedin.png";
-import home from "../assets/skilles.png";
+import React from "react";
 import CV from "../assets/CV.pdf";
-import { DownloadIcon, Mail } from "lucide-react";
+import { DownloadIcon, Mail, Github, Linkedin, Instagram, Code2, Terminal } from "lucide-react";
 
 function Hero({ darkMode }) {
   const socialIcons = [
-    { icon: linkedin, alt: "LinkedIn", link: "https://www.linkedin.com/in/khushabu-chauhan-58672b281/" },
-    { icon: github, alt: "GitHub", link: "https://github.com/ckhushabu6" },
-    { icon: insta, alt: "Instagram", link: "https://instagram.com" },
-    
+    { icon: <Linkedin size={22} />, alt: "LinkedIn", link: "https://www.linkedin.com/in/khushabu-chauhan-58672b281/" },
+    { icon: <Github size={22} />, alt: "GitHub", link: "https://github.com/ckhushabu6" },
+    { icon: <Instagram size={22} />, alt: "Instagram", link: "https://instagram.com" },
   ];
-
-  const theme = darkMode
-    ? {
-        textPrimary: "text-white",
-        textSecondary: "text-gray-300",
-      }
-    : {
-        textPrimary: "text-gray-900",
-        textSecondary: "text-gray-700",
-      };
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center "
+      className="min-h-screen flex items-center pt-28 pb-20 lg:py-0 overflow-hidden transition-colors duration-300"
+      style={{ backgroundColor: darkMode ? "#0f172a" : "#f8fafc" }}
     >
-      <div className="container mx-auto px-6 lg:px-16">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-14">
+      {/* Background Decorative Glow */}
+      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-orange-500/10 blur-[120px] rounded-full"></div>
+      <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full"></div>
 
-          {/* LEFT */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
-
-            {/* Social */}
+      <div className="container mx-auto px-6 lg:px-16 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-14">
+          
+          {/* LEFT CONTENT */}
+          <div className="w-full lg:w-3/5 text-center lg:text-left">
+            {/* Social Icons */}
             <div 
-             data-aos="fade-up"
-              data-aos-delay="300"
-            className="flex justify-center lg:justify-start gap-5 mb-6">
-              {socialIcons.map((social) => (
+              data-aos="fade-down"
+              className="flex justify-center lg:justify-start gap-4 mb-8"
+            >
+              {socialIcons.map((social, idx) => (
                 <a
-                  key={social.alt}
+                  key={idx}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:scale-110 transition-transform"
+                  className={`p-2.5 rounded-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${
+                    darkMode 
+                    ? "bg-gray-800 text-gray-400 hover:text-orange-500 border border-gray-700" 
+                    : "bg-white text-gray-600 hover:text-orange-500 border border-gray-200 shadow-sm"
+                  }`}
                 >
-                  <img
-                    src={social.icon}
-                    alt={social.alt}
-                    className="w-9 h-9 object-contain"
-                  />
+                  {social.icon}
                 </a>
               ))}
             </div>
 
             {/* Heading */}
             <h1
-             data-aos="fade-up"
-              data-aos-delay="300"
-              className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 ${theme.textPrimary}`}
+              data-aos="fade-right"
+              className={`text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight ${
+                darkMode ? "text-white" : "text-gray-900"
+              }`}
             >
-              Hi, I’m{" "}
-              <span className="text-orange-500">Khushabu</span>
+              Hi, I’m <br />
+              <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
+                Khushabu Chauhan
+              </span>
             </h1>
 
             {/* Role */}
-            <h2
-             data-aos="fade-up"
-              data-aos-delay="300"
-              className={`text-xl sm:text-2xl font-semibold mb-4 ${theme.textSecondary}`}
+            <div 
+               data-aos="fade-right"
+               data-aos-delay="100"
+               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 font-bold text-sm sm:text-base mb-6"
             >
-              Frontend Developer | React & Tailwind CSS
-            </h2>
+              <Terminal size={18} />
+              Frontend Developer | React Specialist
+            </div>
 
             {/* Description */}
             <p
-             data-aos="fade-up"
-              data-aos-delay="400"
-              className={`max-w-xl mx-auto lg:mx-0 mb-8 text-base sm:text-lg leading-relaxed ${theme.textSecondary}`}
+              data-aos="fade-right"
+              data-aos-delay="200"
+              className={`max-w-xl mx-auto lg:mx-0 mb-10 text-base sm:text-lg leading-relaxed ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}
             >
-              I build modern, responsive, and user-focused web applications.
-              Passionate about clean UI, smooth animations, and scalable
-              frontend architecture.
+              I specialize in crafting high-performance, visually stunning web experiences. 
+              Turning complex problems into elegant, user-friendly frontend solutions.
             </p>
 
-            {/* Buttons */}
+            {/* Action Buttons */}
             <div 
-             data-aos="fade-up"
+              data-aos="fade-up"
               data-aos-delay="300"
-            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              <a href={CV} download>
-                <button
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full
-                  bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold
-                  hover:shadow-[0_0_35px_rgba(255,165,0,0.6)] transition"
-                >
-                  <DownloadIcon className="w-5 h-5" />
-                  Download Resume
+              className="flex flex-col sm:flex-row justify-center lg:justify-start gap-5"
+            >
+              <a href={CV} download className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all active:scale-95">
+                  <DownloadIcon size={20} />
+                  Download CV
                 </button>
               </a>
 
-              <a href="#contact">
-                <button
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full
-                  border-2 border-orange-500 text-orange-500 font-semibold
-                  hover:bg-orange-500 hover:text-white transition"
-                >
-                  <Mail className="w-5 h-5" />
-                  Contact Me
+              <a href="#contact" className="w-full sm:w-auto">
+                <button className={`w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold border-2 transition-all active:scale-95 ${
+                  darkMode 
+                  ? "border-gray-700 text-white hover:bg-gray-800" 
+                  : "border-gray-200 text-gray-900 hover:bg-gray-50 shadow-sm"
+                }`}>
+                  <Mail size={20} />
+                  Let's Talk
                 </button>
               </a>
             </div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="w-full lg:w-1/2 flex justify-center"
-           data-aos="fade-up"
-              data-aos-delay="300"
+          {/* RIGHT CONTENT: PROFESSIONAL CODE CARD (REPLACED IMAGE) */}
+          <div 
+            className="w-full lg:w-2/5 relative"
+            data-aos="zoom-in"
+            data-aos-delay="400"
           >
-            <img
-              src={home}
-              alt="Developer Illustration"
-              className="max-w-xs sm:max-w-sm lg:max-w-md
-              hover:scale-105 transition-transform duration-500"
-            />
+            <div className={`relative p-6 rounded-3xl border backdrop-blur-sm transition-all duration-500 hover:rotate-2 ${
+              darkMode 
+              ? "bg-gray-900/50 border-gray-700 shadow-2xl" 
+              : "bg-white border-gray-200 shadow-xl"
+            }`}>
+              {/* Card Header (Mac Style) */}
+              <div className="flex gap-2 mb-6">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+
+              {/* Code Content */}
+              <div className="font-mono text-sm sm:text-base space-y-2">
+                <p className="text-purple-500">const <span className="text-blue-500">developer</span> = &#123;</p>
+                <p className="pl-4 text-gray-500">name: <span className="text-orange-500">'Khushabu'</span>,</p>
+                <p className="pl-4 text-gray-500">role: <span className="text-orange-500">'Frontend Dev'</span>,</p>
+                <p className="pl-4 text-gray-500">skills: [</p>
+                <p className="pl-8 text-orange-500">'React', 'Tailwind',</p>
+                <p className="pl-8 text-orange-500">'Javascript', 'Next.js'</p>
+                <p className="pl-4 text-gray-500">],</p>
+                <p className="pl-4 text-gray-500">passionate: <span className="text-green-500">true</span></p>
+                <p className="text-purple-500">&#125;;</p>
+              </div>
+
+              {/* Decorative Icon */}
+              <div className="absolute -bottom-6 -right-6 p-4 rounded-2xl bg-orange-500 text-white shadow-xl animate-bounce">
+                <Code2 size={32} />
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>

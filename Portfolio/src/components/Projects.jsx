@@ -37,20 +37,21 @@ function Projects({ darkMode }) {
   return (
     <section
       id="projects"
-      className="py-20"
+      className="py-20 transition-colors duration-300"
       style={{
         backgroundColor: darkMode ? "#0f172a" : "#f9fafb",
       }}
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Heading */}
         <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 ${darkMode ? "text-white" : "text-gray-900"}`}>
             My{" "}
             <span
               style={{
                 background: "linear-gradient(to right, #f97316, #f59e0b)",
                 WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
                 color: "transparent",
               }}
             >
@@ -58,22 +59,22 @@ function Projects({ darkMode }) {
             </span>
           </h2>
           <p
-            className="max-w-xl mx-auto"
+            className="max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
             style={{ color: darkMode ? "#cbd5f5" : "#64748b" }}
           >
-            Selected projects demonstrating real-world problem solving
+            Selected projects demonstrating real-world problem solving and technical proficiency.
           </p>
         </div>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Project Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {projects.map((project, index) => (
             <div
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="group rounded-2xl border p-6 transition-all duration-300
-              hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)]"
+              className="group rounded-2xl border p-6 sm:p-8 transition-all duration-300
+              hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)] flex flex-col"
               style={{
                 background: darkMode
                   ? "linear-gradient(to bottom right, #1e293b, #020617)"
@@ -83,7 +84,7 @@ function Projects({ darkMode }) {
             >
               {/* Title */}
               <h3
-                className="text-2xl font-bold mb-2"
+                className="text-xl sm:text-2xl font-bold mb-3"
                 style={{ color: darkMode ? "white" : "#0f172a" }}
               >
                 {project.title}
@@ -91,32 +92,33 @@ function Projects({ darkMode }) {
 
               {/* Description */}
               <p
-                className="mb-4 text-sm"
+                className="mb-4 text-sm sm:text-base leading-relaxed"
                 style={{ color: darkMode ? "#cbd5e1" : "#475569" }}
               >
                 {project.description}
               </p>
 
               {/* Bullet Points */}
-              <ul className="mb-5 space-y-2 list-disc list-inside">
+              <ul className="mb-6 space-y-2 flex-grow">
                 {project.points.map((point, i) => (
                   <li
                     key={i}
-                    className="text-sm"
+                    className="text-xs sm:text-sm flex items-start"
                     style={{ color: darkMode ? "#94a3b8" : "#475569" }}
                   >
+                    <span className="text-orange-500 mr-2 mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 bg-orange-500"></span>
                     {point}
                   </li>
                 ))}
               </ul>
 
               {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 text-xs font-semibold rounded-full
-                    bg-orange-500/10 text-orange-500"
+                    className="px-3 py-1 text-[10px] sm:text-xs font-bold rounded-full
+                    bg-orange-500/10 text-orange-500 border border-orange-500/20"
                   >
                     {tech}
                   </span>
@@ -124,13 +126,13 @@ function Projects({ darkMode }) {
               </div>
 
               {/* Links */}
-              <div className="flex gap-4">
+              <div className="flex gap-6 mt-auto pt-4 border-t border-orange-500/10">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold
-                  text-orange-500 hover:underline"
+                  className="flex items-center gap-2 text-sm font-bold
+                  text-orange-500 hover:text-orange-600 transition-colors"
                 >
                   <Github className="w-4 h-4" /> GitHub
                 </a>
@@ -139,8 +141,8 @@ function Projects({ darkMode }) {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold
-                  text-orange-500 hover:underline"
+                  className="flex items-center gap-2 text-sm font-bold
+                  text-orange-500 hover:text-orange-600 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" /> Live Demo
                 </a>

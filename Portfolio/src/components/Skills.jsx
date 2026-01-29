@@ -6,160 +6,93 @@ import react from '../assets/react.png'
 import tailwine from '../assets/tailwine.png'
 import framer_motion from '../assets/framer_motion.png'
 
-function Skills({darkMode}) {
+function Skills({ darkMode }) {
     const skills = [
-        {name : 'html', icon:html , level:80 ,
-             color: 'from-orange-500 to-amber-500'},
+        { name: 'HTML', icon: html, level: 80, color: 'from-orange-500 to-amber-500' },
+        { name: 'CSS', icon: css, level: 70, color: 'from-orange-500 to-amber-500' },
+        { name: 'JavaScript', icon: js, level: 70, color: 'from-orange-500 to-amber-500' },
+        { name: 'React', icon: react, level: 70, color: 'from-orange-500 to-amber-500' },
+        { name: 'Tailwind CSS', icon: tailwine, level: 50, color: 'from-orange-500 to-amber-500' },
+        { name: 'Framer Motion', icon: framer_motion, level: 50, color: 'from-orange-500 to-amber-500' },
+    ]
 
-        {name : 'css', icon:css , level:70 ,
-             color: 'from-orange-500 to-amber-500'},
+    return (
+        <section
+            id='skills'
+            className={`py-20 relative transition-colors duration-300 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}
+        >
+            <div className='container px-6 mx-auto'>
+                {/* Header Section */}
+                <div className='text-center mb-16' data-aos='fade-up'>
+                    <h1 className='text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 transition-colors duration-300'
+                        style={{ color: darkMode ? 'white' : '#111827' }}>
+                        My <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Skills</span>
+                    </h1>
+                    <p className={`text-base sm:text-lg max-w-2xl mx-auto leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                        A mix of frontend technologies I use to build modern and responsive web applications.
+                    </p>
+                </div>
 
-        {name : 'js', icon:js , level:70 ,
-             color: 'from-orange-500 to-amber-500'},
-
-        {name : 'react', icon:react , level:70 ,
-             color: 'from-orange-500 to-amber-500'},
-
-        {name : 'tailwine', icon:tailwine , level:50 ,
-             color: 'from-orange-500 to-amber-500'},
-
-        {name : 'framer_motion', icon:framer_motion , level:50 ,
-             color: 'from-orange-500 to-amber-500'},
-     ]
-
-  return (
-        
-    <section 
-    id='skills'
-    style={{
-        backgroundColor: darkMode ? '#111827' : '#f9fafb'
-    }}
-    className='py-14 relative overflow-hidden'>
-        <div className='py-14 relative overflow-hidden'>
-            <div className='container px-5 py-14 mx-auto'>
-              <div className='text-center mb-20' data-aos='fade-up'> 
-                     <h1 className='sm:text-4xl text-3xl font-bold title-font mb-4'>
-                    My
-                    <span
-  style={{
-    background: 'linear-gradient(to right, #f97316, #f59e0b)',
-    WebkitBackgroundClip: 'text',
-    backgroundClip: 'text',
-    color: 'transparent'
-  }}
->
-  Skills
-</span></h1> 
-                     <p 
-                    className='text-lg max-w-2xl mx-auto leading-relaxed'
-                    style={{
-                        color: darkMode ? '#d1d5db' : '#4b5563'
-                    }}>
-                   A mix of frontend technologies I use to build modern and responsive
-            web applications.
-                        
-                     </p> 
-                </div> 
-                <div
-                className='flex flex-wrap -m-4'
-                data-aos='fade-up'
-                data-aos-delay='200'
-                >
-                    {skills.map((skill, index)=>(
-                         <div
-                        key={index}
-                        className='p-4 lg:w-1/4 md:w-1/2 w-full'
-                         data-aos='fade-up'
-                        data-aos-delay={`${300 + index *100}`}
+                {/* Skills Grid */}
+                {/* CHANGED: Adjusted grid for better responsiveness: 1 col on mobile, 2 on tablet, 3 on small laptop, 4 on desktop */}
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' data-aos='fade-up' data-aos-delay='200'>
+                    {skills.map((skill, index) => (
+                        <div
+                            key={index}
+                            data-aos='fade-up'
+                            data-aos-delay={`${100 + index * 50}`}
+                            className="group"
                         >
                             <div
-                             style={{
-    background: darkMode
-      ? 'linear-gradient(to bottom right, #1f2937, #111827)'
-      : 'linear-gradient(to bottom right, #ffffff, #f3f4f6)'
-  }}
-                             className='h-full p-6 rounded-2xl border hover:border-orange-500/50 transition-all
-                            duration-300 hover:-translate-y-2 group 
-                            hover:shadow-[0_0_30px_rgb(255, 165, 0 , 0.15)]'>
-                                 <div className='flex items-center mb-6'>
-                                    <div
-                                    style={{
-                                         background:darkMode ? 'linear-gradient(to bottom right , #374151 , #1f2937)'
-                                 : 'linear-gradient(to bottom right , #f3f4f6 , #e5e7eb)'
-                                    }}
-                                    className='w-16 h-16 rounded-xl p-3 flex items-center justify-center 
-                                     group-hover:scale-110 transition-transform duration-300'
-                                    >
-                                        <img 
-                                        src={skill.icon}
-                                        alt={skill.name}
-                                        className='w-full h-full object-contain'
+                                className={`h-full p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-2 
+                                ${darkMode 
+                                    ? 'bg-gray-800/50 border-gray-700 hover:border-orange-500/50 shadow-xl' 
+                                    : 'bg-white border-gray-200 hover:border-orange-500/50 shadow-md'} 
+                                hover:shadow-orange-500/10`}
+                            >
+                                <div className='flex items-center mb-6'>
+                                    <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl p-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-110
+                                        ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
+                                        <img
+                                            src={skill.icon}
+                                            alt={skill.name}
+                                            className='w-full h-full object-contain'
                                         />
-                                        </div>
-
-                                        <h3
-                                        className='text-2xl font-bold ml-4'
-                                        style={{
-                                            color:darkMode ? 'white' : '#1f2937'
-                                        }}
-                                        >
-                                             {skill.name}
-                                        </h3>
-                                       
-                                        
-                                    </div> 
-                                    <div className='mb-2 flex justify-between  items-center'>
-                                        <span
-                                        className='font-medium'
-                                        style={{
-                                color:darkMode ? '#d1d5db' : '#6b7280'
-                                        }}>
-                                            Proficiency
-                                        </span>
-                                        <span 
-                                        style={{
-                                            background : 'linear-gradient(to right, #f97316, #f59e0b)',
-                                            WebkitBackgroundClip: 'text',
-                                            backgroundClip: 'text',
-                                            color:'transparent'
-                                        }}
-                                        className='font-bold'>
-                                            {skill.level}%
-
-                                        </span>
-
-                                    
-
                                     </div>
+
+                                    <h3 className={`text-xl sm:text-2xl font-bold ml-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                                        {skill.name}
+                                    </h3>
+                                </div>
+
+                                <div className='mb-2 flex justify-between items-center'>
+                                    <span className={`text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                                        Proficiency
+                                    </span>
+                                    <span className='font-bold text-orange-500'>
+                                        {skill.level}%
+                                    </span>
+                                </div>
+
+                                {/* Progress Bar Container */}
+                                <div className={`w-full rounded-full h-2.5 overflow-hidden ${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
                                     <div
-                                    className='w-full rounded-full h-3  overflow-hidden'
-                                    style={{
-                                    backgroundColor : darkMode ? '#374151 ' : '#e5e7eb'
-                                    }}>
-                                    <div
-                                    className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
-                                    style={{
-                                        width: `${skill.level}%`
-                                    }}
+                                        className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                                        style={{ width: `${skill.level}%` }}
                                     ></div>
-                                    </div>
-                                    <div className={`mt-6 pt-4 border-t ${darkMode ? 'border-gray-700 ': 'border-gray-300'
-                                    }`}>
-                                        <div className='h-1 rounded-full opacity-70 group-hover:w-full transition-all duration-500 w-1/3'
-                                        style={{
-                                            background : 'linear-gradient(to right, #f97316, #f59e0b)'
+                                </div>
 
-                                        }}></div>
-                                 </div>
+                                {/* Decorative Line */}
+                                <div className={`mt-6 pt-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                                    <div className='h-1 rounded-full opacity-70 group-hover:w-full transition-all duration-500 w-1/4 bg-gradient-to-r from-orange-500 to-amber-500'></div>
+                                </div>
                             </div>
-
-                         </div> 
+                        </div>
                     ))}
                 </div>
             </div>
-        </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default Skills

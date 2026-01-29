@@ -1,8 +1,8 @@
-import contact from "../assets/contact.png";
 import React, { useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 function Contect({ darkMode }) {
   const form = useRef();
@@ -25,17 +25,11 @@ function Contect({ darkMode }) {
           setIsSent(true);
           setLoading(false);
           form.current.reset();
-          toast.success("Message sent successfully! ✅", {
-            position: "top-right",
-            autoClose: 3000,
-          });
+          toast.success("Message sent successfully! ✅");
         },
         () => {
           setLoading(false);
-          toast.error("Fail to send message, Please try again", {
-            position: "top-right",
-            autoClose: 3000,
-          });
+          toast.error("Failed to send message. Please try again.");
         }
       );
   };
@@ -43,136 +37,122 @@ function Contect({ darkMode }) {
   return (
     <section
       id="contact"
-      style={{ backgroundColor: darkMode ? "#111827" : "#f9fafb" }}
-      className="py-16 lg:py-24"
+      className="py-20 transition-colors duration-300"
+      style={{ backgroundColor: darkMode ? "#0f172a" : "#f8fafc" }}
     >
-      <ToastContainer />
+      <ToastContainer theme={darkMode ? "dark" : "light"} />
 
-      <div className="container mx-auto px-4">
-        {/* Title */}
-        <div className="text-center mb-12">
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ color: darkMode ? "white" : "#1f2937" }}
-          >
-            Get In{" "}
-            <span
-              style={{
-                background: "linear-gradient(to right, #f97326, #f59e0b)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Touch
-            </span>
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 ${darkMode ? "text-white" : "text-gray-900"}`}>
+            Let's <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Connect</span>
           </h2>
-          <p
-            className="mt-3 text-base md:text-lg"
-            style={{ color: darkMode ? "#cbd5e1" : "#6b7280" }}
-          >
-            Send me a message and I will reply you soon.
+          <p className={`text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+            Have a project in mind or just want to say hi? My inbox is always open.
           </p>
         </div>
 
-        {/* Layout (Side by Side) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          
-          {/* SIMPLE IMAGE */}
-          <div className="flex justify-center" data-aos="fade-right">
-            <img
-              src={contact}
-              alt="contact"
-              className="w-[220px] sm:w-[260px] lg:w-[300px] object-contain"
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Quick Contact Info Cards */}
+          <div className="lg:col-span-1 space-y-6" data-aos="fade-right">
+            {[
+              { icon: <Mail />, label: "Email Me", value: "ckhushabu6@gmail.com", color: "bg-blue-500/10 text-blue-500" },
+              { icon: <Phone />, label: "Call Me", value: "+91 8446635843", color: "bg-green-500/10 text-green-500" },
+              { icon: <MapPin />, label: "Location", value: "Nashik, Maharashtra", color: "bg-orange-500/10 text-orange-500" },
+            ].map((info, i) => (
+              <div 
+                key={i} 
+                className={`p-6 rounded-2xl border flex items-center gap-4 transition-all duration-300 hover:scale-105 ${darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200 shadow-sm'}`}
+              >
+                <div className={`p-3 rounded-xl ${info.color}`}>
+                  {React.cloneElement(info.icon, { size: 24 })}
+                </div>
+                <div>
+                  <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{info.label}</p>
+                  <p className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{info.value}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* FORM */}
-          <form
-            ref={form}
-            onSubmit={sendMessage}
-            data-aos="fade-left"
-            data-aos-delay="200"
-            className="p-6 rounded-2xl shadow-xl border"
-            style={{
-              background: darkMode
-                ? "linear-gradient(to right, #1f2937, #111827)"
-                : "linear-gradient(to right, #ffffff, #f3f4f6)",
-              borderColor: darkMode ? "#374151" : "#e5e7eb",
-            }}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <input
-                type="text"
-                name="from_name"
-                placeholder="First Name"
-                required
-                className="w-full px-4 py-3 rounded-xl bg-transparent mb-6 border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
-                style={{
-                  borderColor: darkMode ? "#4b5563" : "#d1d5db",
-                  color: darkMode ? "white" : "#1f2937",
-                }}
-              />
-
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                required
-                className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
-                style={{
-                  borderColor: darkMode ? "#4b5563" : "#d1d5db",
-                  color: darkMode ? "white" : "#1f2937",
-                }}
-              />
-            </div>
-
-            <input
-              type="email"
-              name="from_email"
-              placeholder="Email Address"
-              required
-              className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4"
-              style={{
-                borderColor: darkMode ? "#4b5563" : "#d1d5db",
-                color: darkMode ? "white" : "#1f2937",
-              }}
-            />
-
-            <input
-              type="number"
-              name="phone"
-              placeholder="Phone Number"
-              required
-              className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4"
-              style={{
-                borderColor: darkMode ? "#4b5563" : "#d1d5db",
-                color: darkMode ? "white" : "#1f2937",
-              }}
-            />
-
-            <textarea
-              name="message"
-              rows="4"
-              placeholder="Your Message"
-              required
-              className="w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition mb-4 resize-none"
-              style={{
-                borderColor: darkMode ? "#4b5563" : "#d1d5db",
-                color: darkMode ? "white" : "#1f2937",
-              }}
-            />
-
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl font-semibold text-white hover:shadow-xl transition transform hover:-translate-y-1"
-              style={{
-                background: "linear-gradient(to right, #f97316, #f59e0b)",
-              }}
+          {/* Form Card */}
+          <div className="lg:col-span-2" data-aos="fade-left">
+            <form
+              ref={form}
+              onSubmit={sendMessage}
+              className={`p-8 md:p-10 rounded-3xl border shadow-2xl transition-all ${
+                darkMode ? "bg-gray-800/30 border-gray-700" : "bg-white border-gray-100"
+              }`}
             >
-              {loading ? "Sending..." : isSent ? "Sent ✓" : "Send Message"}
-            </button>
-          </form>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="space-y-2">
+                  <label className={`text-sm font-semibold ml-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>First Name</label>
+                  <input
+                    type="text"
+                    name="from_name"
+                    required
+                    className={`w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/40 transition-all ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-gray-900'}`}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className={`text-sm font-semibold ml-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    required
+                    className={`w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/40 transition-all ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-gray-900'}`}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="space-y-2">
+                  <label className={`text-sm font-semibold ml-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Email Address</label>
+                  <input
+                    type="email"
+                    name="from_email"
+                    required
+                    className={`w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/40 transition-all ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-gray-900'}`}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className={`text-sm font-semibold ml-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    className={`w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/40 transition-all ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-gray-900'}`}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2 mb-8">
+                <label className={`text-sm font-semibold ml-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Message</label>
+                <textarea
+                  name="message"
+                  rows="5"
+                  required
+                  className={`w-full px-4 py-3 rounded-xl bg-transparent border focus:outline-none focus:ring-2 focus:ring-orange-500/40 transition-all resize-none ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-gray-900'}`}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-2 group transition-all duration-300 active:scale-95 disabled:opacity-50"
+                style={{ background: "linear-gradient(to right, #f97316, #f59e0b)" }}
+              >
+                {loading ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    {isSent ? "Message Sent ✓" : "Send Message"}
+                    <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
