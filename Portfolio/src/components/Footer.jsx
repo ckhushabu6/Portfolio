@@ -51,7 +51,7 @@ function Footer({ darkMode }) {
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/ckhushabu666/"
               className="w-10 h-10 rounded-full flex items-center justify-center
               bg-gray-700 text-white hover:scale-110 transition-all
               hover:bg-gradient-to-r hover:from-orange-500 hover:to-amber-500"
@@ -68,7 +68,7 @@ function Footer({ darkMode }) {
                 color: darkMode ? "#9ca3af" : "#6b7280",
               }}
             >
-              © {new Date().getFullYear()} Khushabu. All rights reserved.
+              © {new Date().getFullYear()} Khushabu.
             </p>
           </div>
 

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, X, Menu } from "lucide-react";
 import { useState } from "react";
 
+
 function Navbar({ darkMode, toggleDarkMode, activeSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -38,8 +39,10 @@ function Navbar({ darkMode, toggleDarkMode, activeSection }) {
         backdrop-blur-lg rounded-2xl px-6 py-3 shadow-lg`}
       >
         <div className="flex items-center justify-between">
+         
           <a href="#home" className={`text-xl font-bold ${colors.textPrimary}`}>
-            Portfolio<span className="text-orange-500">.</span>
+             
+           <span className="text-orange-500">Khushbu.Dev</span>
           </a>
 
           {/* Desktop */}

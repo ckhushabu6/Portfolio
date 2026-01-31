@@ -64,6 +64,10 @@ function App() {
   };
 
   return (
+    <div className="overflow-x-hidden">
+  {/* your whole app */}
+
+
     <div className={
       darkMode
       ? 'bg-liner-to-br from-gray-900 via-[#0d182e] to-gray-900 min-h-screen'
@@ -78,6 +82,7 @@ function App() {
       <Contact darkMode={darkMode}/>
       <Footer darkMode={darkMode}/>
     </div>
+  </div>
   )
 }
 

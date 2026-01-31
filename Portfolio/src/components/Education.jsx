@@ -3,71 +3,50 @@ import React from "react";
 function Education({ darkMode }) {
   const educationData = [
     {
-      degree: "Software Engineering",
+      degree: "Software Engineering Program",
       institute: "Masai School",
       year: "2026",
-      highlight: "Full-stack development, DSA, real-world projects",
+      highlight: "Hands-on training in full-stack development, data structures, and production-grade projects",
     },
     {
       degree: "Master of Computer Applications (MCA)",
       institute: "K.K. Wagh Institute of Engineering Education & Research",
       year: "2023 – 2025",
-      highlight: "Advanced programming, software engineering concepts",
+      highlight: "Advanced coursework in software engineering and application development",
     },
     {
       degree: "Bachelor of Computer Science (BCS)",
       institute: "G.M.D. Arts, B.W. Commerce & Science College",
       year: "2019 – 2022",
-      highlight: "Core computer science fundamentals",
-    },
-    {
-      degree: "Higher Secondary (11th & 12th)",
-      institute: "G.M.D. Arts, B.W. Commerce & Science College",
-      year: "2017 – 2019",
-      highlight: "Science stream",
-    },
-    {
-      degree: "Secondary School (10th)",
-      institute: "Shree English Medium School, Sinner",
-      year: "2017",
-      highlight: "Strong academic foundation",
-    },
+      highlight: "Strong foundation in core computer science concepts",
+    }
   ];
 
   return (
     <section
       id="education"
-      className="py-20 transition-colors duration-300"
-      style={{
-        backgroundColor: darkMode ? "#111827" : "#f9fafb",
-      }}
+      className={`py-20 transition-colors duration-300 ${
+        darkMode ? "bg-[#111827] text-white" : "bg-gray-50 text-gray-900"
+      }`}
     >
       <div className="max-w-5xl mx-auto px-6">
-        {/* Heading */}
+        
+        {/* Header */}
         <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className={`text-3xl sm:text-4xl font-bold mb-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-            My{" "}
-            <span
-              style={{
-                background: "linear-gradient(to right, #f97316, #f59e0b)",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Education
-            </span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+            Education
           </h2>
           <p
-            className="max-w-xl mx-auto text-base sm:text-lg"
-            style={{ color: darkMode ? "#d1d5db" : "#6b7280" }}
+            className={`max-w-xl mx-auto text-base sm:text-lg ${
+              darkMode ? "text-gray-400" : "text-gray-600"
+            }`}
           >
-            Academic journey that shaped my technical foundation
+            Academic background supporting my engineering skill set
           </p>
         </div>
 
         {/* Timeline */}
-        {/* CHANGED: Added relative positioning and adjusted border-left for better mobile spacing */}
-        <div className="relative border-l-2 border-orange-500/40 ml-2 sm:ml-4">
+        <div className="relative border-l border-orange-500/40 ml-2 sm:ml-4">
           {educationData.map((edu, index) => (
             <div
               key={index}
@@ -75,38 +54,37 @@ function Education({ darkMode }) {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              {/* Dot */}
-              {/* CHANGED: Precision positioning for the dot so it stays centered on the line regardless of screen size */}
-              <span className="absolute -left-[9px] w-4 h-4 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.4)]"></span>
+              {/* Timeline Dot */}
+              <span className="absolute -left-[7px] w-3.5 h-3.5 rounded-full bg-orange-500" />
 
-              {/* Card */}
+              {/* Content Card */}
               <div
-                className="p-6 rounded-xl border shadow-md transition-transform hover:scale-[1.01]"
-                style={{
-                  background: darkMode
-                    ? "linear-gradient(to bottom right, #1f2937, #111827)"
-                    : "linear-gradient(to bottom right, #ffffff, #f3f4f6)",
-                  borderColor: darkMode ? "#374151" : "#e5e7eb",
-                }}
+                className={`p-6 rounded-xl border transition-colors ${
+                  darkMode
+                    ? "bg-gray-800/40 border-gray-700"
+                    : "bg-white border-gray-200"
+                }`}
               >
-                <span className="text-sm font-bold text-orange-500 uppercase tracking-wide">
+                <span className="text-xs font-semibold text-orange-500 uppercase tracking-wide">
                   {edu.year}
                 </span>
-                <h3
-                  className="text-xl font-bold mt-1 leading-tight"
-                  style={{ color: darkMode ? "white" : "#1f2937" }}
-                >
+
+                <h3 className="text-lg sm:text-xl font-semibold mt-1">
                   {edu.degree}
                 </h3>
+
                 <p
-                  className="mt-1 font-medium text-sm sm:text-base"
-                  style={{ color: darkMode ? "#d1d5db" : "#4b5563" }}
+                  className={`mt-1 text-sm sm:text-base font-medium ${
+                    darkMode ? "text-gray-300" : "text-gray-600"
+                  }`}
                 >
                   {edu.institute}
                 </p>
+
                 <p
-                  className="mt-3 text-sm leading-relaxed"
-                  style={{ color: darkMode ? "#9ca3af" : "#6b7280" }}
+                  className={`mt-3 text-sm leading-relaxed ${
+                    darkMode ? "text-gray-400" : "text-gray-500"
+                  }`}
                 >
                   {edu.highlight}
                 </p>
@@ -114,6 +92,7 @@ function Education({ darkMode }) {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
