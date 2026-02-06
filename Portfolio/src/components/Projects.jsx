@@ -4,6 +4,21 @@ import { Github, ExternalLink } from "lucide-react";
 function Projects({ darkMode }) {
   const projects = [
     {
+  title: "ImageHub - Creative Gallery",
+  description:
+    "A full-stack image management platform where users can upload, categorize, and discover visual assets with personalized recommendations.",
+  points: [
+    "Developed a secure authentication system using Firebase Auth for personalized user dashboards",
+    "Integrated Cloudinary API for high-performance image hosting and automated asset transformation",
+    "Implemented personalized 'Recommended For You' feed using Firestore query logic based on user interests",
+    "Built a dynamic CRUD system allowing users to publish, organize by category, and manage image privacy",
+    "Designed a modern, responsive UI with Tailwind CSS featuring skeleton loaders and an intuitive multi-step upload flow",
+  ],
+  tech: ["React", "Tailwind CSS", "Firebase", "Cloudinary", "Axios"],
+  github: "https://github.com/ckhushabu6/ImageHub/tree/main/imagehub-entertainment", // Apna link yahan dalein
+  live: "https://imagehub-v1.netlify.app", // Apna live demo link yahan dalein
+},
+    {
       title: "AI Travel Planner",
       description:
         "AI-powered travel itinerary generator that creates personalized trip plans based on user preferences.",
@@ -15,8 +30,8 @@ function Projects({ darkMode }) {
         "Optimized routing and data fetching for real-time trip views",
       ],
       tech: ["React", "Tailwind CSS", "Gemini API", "Firebase"],
-      github: "https://github.com/",
-      live: "#",
+      github: "https://github.com/ckhushabu6/Travel-Itinerary-Planning-Tool-my-react-project-/tree/main/ai-travel-planner",
+      // live: "#",
     },
     {
       title: "Interactive Portfolio",
@@ -29,8 +44,8 @@ function Projects({ darkMode }) {
         "Used modular component architecture for scalability",
       ],
       tech: ["React", "Tailwind CSS", "Framer Motion", "AOS"],
-      github: "https://github.com/",
-      live: "#",
+      github: "https://github.com/ckhushabu6/Portfolio/tree/main/Portfolio/",
+      live: "https://khushbu-dev.netlify.app",
     },
   ];
 
