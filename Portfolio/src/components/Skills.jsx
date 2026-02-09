@@ -6,7 +6,10 @@ import {
   SiReact,
   SiRedux,
   SiTailwindcss,
-  SiFramer
+  SiFramer,
+  SiNodedotjs, // Added Node.js
+  SiExpress,   // Added Express
+  SiMongodb    // Added MongoDB
 } from "react-icons/si";
 
 function Skills({ darkMode }) {
@@ -17,6 +20,9 @@ function Skills({ darkMode }) {
     { name: "React", icon: SiReact, color: "text-cyan-400" },
     { name: "Redux / Toolkit", icon: SiRedux, color: "text-purple-500" },
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-sky-400" },
+    { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
+    { name: "Express", icon: SiExpress, color: darkMode ? "text-white" : "text-gray-800" },
+    { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
     { name: "Framer Motion", icon: SiFramer, color: "text-pink-500" }
   ];
 
@@ -42,12 +48,12 @@ function Skills({ darkMode }) {
               darkMode ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            Technologies I use to build modern web applications.
+            Technologies I use to build modern full-stack web applications.
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
 

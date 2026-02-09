@@ -39,7 +39,7 @@ function Hero({ darkMode }) {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 font-semibold text-sm sm:text-base mb-6"
             >
               <Terminal size={18} />
-              Frontend Developer
+              FullStack Developer
             </div>
 
             {/* Description */}
